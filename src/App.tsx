@@ -3,9 +3,9 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import { useTranslation } from 'react-i18next';
 import './styles/style.scss';
-import { ThemeProvider } from '@mui/material';
-import { useThemeMode } from './theme/useTheme.ts';
-import { CustomButton } from './shared/CustomButton.ts';
+import { Button, ThemeProvider } from '@mui/material';
+import { useThemeMode } from './theme';
+import { LOCALE_CONSTANTS } from './core';
 
 function App() {
   const theme = useThemeMode();
@@ -17,8 +17,7 @@ function App() {
   } = useTranslation();
 
   const handleChangeLanguage = () => {
-    const newLanguage = language === 'en' ? 'uk' : 'en';
-
+    const newLanguage = language === LOCALE_CONSTANTS.EN ? LOCALE_CONSTANTS.UK : LOCALE_CONSTANTS.EN;
     changeLanguage(newLanguage);
   };
 
@@ -28,22 +27,23 @@ function App() {
         <a href='https://vite.dev' target='_blank'>
           <img src={viteLogo} className='logo' alt='Vite logo' />
         </a>
-        <h3>Current Language: {language}</h3>
-        <CustomButton onClick={handleChangeLanguage}>Change Language</CustomButton>
+        <h3>
+          {t('language')}: {language}
+        </h3>
+        <Button onClick={handleChangeLanguage}>{t('switch language')}</Button>
 
         <h1>{t('welcome', { name: 'Гість' })}</h1>
         <a href='https://react.dev' target='_blank'>
           <img src={reactLogo} className='logo react' alt='React logo' />
         </a>
       </div>
-      <CustomButton onClick={() => theme.toggleTheme()}>Theme {theme.mode}</CustomButton>
+      <Button onClick={() => theme.toggleTheme()}>{t(`Theme ${theme.mode}`)}</Button>
 
       <h1>Vite + React</h1>
       <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <button onClick={() => setCount((count) => count + 1)}>
+          {t(`count`)} {count}
+        </button>
       </div>
       <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
     </ThemeProvider>

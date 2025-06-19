@@ -1,4 +1,3 @@
-
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
@@ -52,6 +51,7 @@ export default [
             '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
 
             // --- General ---
+            'no-console': ['error', { allow: [] }],
             'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
 
             // --- Prettier (optional) ---

@@ -1,14 +1,16 @@
 import { useMemo, useState } from 'react';
 import { darkTheme, lightTheme } from './thems.ts';
+import { ThemeMode } from '../core';
+import type { ThemeModeType } from '../core';
+import type { UseThemeModeReturn } from '../core';
 
+export const useThemeMode = (): UseThemeModeReturn => {
+  const [mode, setMode] = useState<ThemeModeType>(ThemeMode.LIGHT);
 
-export const useThemeMode = () => {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const theme = useMemo(() => (mode === ThemeMode.LIGHT ? lightTheme : darkTheme), [mode]);
 
-  const theme = useMemo(() => (mode === 'light' ? lightTheme : darkTheme), [mode]);
-
-  const toggleTheme = () => {
-    setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+  const toggleTheme = (): void => {
+    setMode((prev): ThemeModeType => (prev === ThemeMode.LIGHT ? ThemeMode.DARK : ThemeMode.LIGHT));
   };
 
   return { theme, mode, toggleTheme };

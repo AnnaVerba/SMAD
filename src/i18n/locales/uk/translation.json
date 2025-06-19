@@ -1,6 +1,12 @@
 {
 
   "translation": {
+    "count": "Кількість натискань",
+    "react-docs": "Натисніть на реакт лого щоб дізнатися більше",
+    "Theme light": "Світла тема",
+    "Theme dark": "Темна тема",
+    "switch language": "Змінити мову",
+    "language": "Поточна мова",
     "welcome": "Ласкаво просимо, {{name}}!",
     "login": {
       "title": "Увійти",
