@@ -9,7 +9,6 @@ import { LOCALE_CONSTANTS } from './core';
 
 function App() {
   const theme = useThemeMode();
-
   const [count, setCount] = useState(0);
   const {
     t,
@@ -45,7 +44,7 @@ function App() {
           {t(`count`)} {count}
         </button>
       </div>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
+      <p className='read-the-docs'>{t('react-docs')}</p>
     </ThemeProvider>
   );
 }
