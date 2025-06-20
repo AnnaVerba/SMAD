@@ -1,0 +1,16 @@
+{
+
+  "translation": {
+    "count": "count is",
+    "react-docs": "Click on the Vite and React logos to learn more",
+    "Theme light": "Theme light",
+    "Theme dark": "Theme dark",
+    "switch language": "Change Language",
+    "language": "Current Language",
+    "welcome": "Welcome, {{name}}!",
+    "login": {
+      "title": "Enter",
+      "button": "Confirm"
+    }
+  }
+}
