@@ -6,6 +6,7 @@ import './styles/style.scss';
 import { Button, ThemeProvider } from '@mui/material';
 import { useThemeMode } from './theme';
 import { LOCALE_CONSTANTS } from './core';
+import { SideBar } from './layouts/SideBar/SideBar';
 
 function App() {
   const theme = useThemeMode();
@@ -22,7 +23,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme.theme}>
+        <SideBar></SideBar>
       <div>
+
         <a href='https://vite.dev' target='_blank'>
           <img src={viteLogo} className='logo' alt='Vite logo' />
         </a>

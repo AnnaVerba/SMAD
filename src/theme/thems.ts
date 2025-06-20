@@ -7,20 +7,31 @@ export const lightTheme = createTheme({
     ...lightPalette,
   },
   components: {
+    MuiDrawer: {
+      styleOverrides: {
+        root: { display: 'block' },
+        paper: {
+          width: '241px',
+          boxSizing: 'border-box',
+          backgroundColor: lightPalette.background.default,
+          color: lightPalette.text.default,
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
           background: lightPalette.primary.main,
 
           color: lightPalette.text.primary,
-          borderRadius: 25,
           textTransform: 'none',
         },
       },
     },
   },
   typography: {
-    fontFamily: `'Roboto', 'Helvetica', 'Arial', sans-serif`,
+    fontFamily: `'Kumbh Sans', 'Helvetica', 'Arial', sans-serif`,
+
   },
 });
 
@@ -30,6 +41,17 @@ export const darkTheme = createTheme({
     ...darkPalette,
   },
   components: {
+    MuiDrawer: {
+      styleOverrides: {
+        root: { display: 'block', background: darkPalette.primary.main },
+        paper: {
+          width: '241px',
+          boxSizing: 'border-box',
+          backgroundColor: lightPalette.background.default,
+          color: lightPalette.text.default,
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -40,5 +62,8 @@ export const darkTheme = createTheme({
         },
       },
     },
+  },
+  typography: {
+    fontFamily: `'Kumbh Sans', 'Helvetica', 'Arial', sans-serif`,
   },
 });
