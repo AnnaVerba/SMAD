@@ -1,84 +1,84 @@
-import { Divider, List, ListItem, ListItemButton, ListItemText, Toolbar } from '@mui/material';
+import { Badge, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { SidebarExtraOptions, SidebarOptions } from '../../../core/constansts/sidebar-options';
+import type { SidebarOptionsType } from '../../../core/type/sidebar-options.ts';
+import { Link } from 'react-router-dom';
 
-export const SideBarOptions = () => (
-  <div>
-    <Toolbar />
-    <Divider sx={{ background: '#BDBDBD', marginTop: '170px', width: '280px', border: '0,5px' }} />
-    <List
-      sx={{
-        width: '192px',
-        height: '279px',
-        top: '11px',
-        marginLeft: '25px',
-      }}
-    >
-      {SidebarOptions.map((item: { text: string; image: string }) => (
-        <ListItem key={item.text} disablePadding sx={{ height: '40px', marginBottom: '8px' }}>
-          <ListItemButton
-            sx={{
-              borderRadius: '4px',
-              '&.Mui-selected:hover': {
-                backgroundColor: 'blue',
-                color: 'blue',
-              },
-              '&.Mui-selected': {
-                backgroundColor: 'blue',
-              },
-            }}
-          >
-            <img src={item.image} alt='icon ' style={{ height: '16px', width: '16px', marginRight: '14px' }} />
-            <ListItemText
-              primary={item.text}
-              slotProps={{
-                primary: {
-                  sx: {
-                    fontFamily: 'Kumbh Sans',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    height: '17px',
+export const SideBarOptions = () => {
+  return (
+    <div>
+      <List
+        sx={{
+          width: '192px',
+          height: '279px',
+          top: '15px',
+          marginLeft: '25px',
+        }}
+      >
+        {SidebarOptions.map((item: SidebarOptionsType) => (
+          <ListItem key={item.text} disablePadding sx={{ height: '40px', marginBottom: '8px' }}>
+            <ListItemButton component={Link} to={item.navigate} selected={location.pathname === item.navigate}>
+              <img src={item.image} alt='icon' style={{ height: '16px', width: '16px', marginRight: '14px' }} />
+              <ListItemText
+                primary={item.text}
+                slotProps={{
+                  primary: {
+                    sx: {
+                      fontFamily: 'Kumbh Sans',
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      height: '17px',
+                    },
                   },
-                },
-              }}
-            />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
 
-    <List
-      sx={{
-        width: '192px',
-        top: '100px',
-        marginLeft: '25px',
-      }}
-    >
-      {SidebarExtraOptions.map((item) => (
-        <ListItem key={item.text} disablePadding sx={{ height: '40px', marginBottom: '8px' }}>
-          <ListItemButton    sx={{
-            borderRadius: '4px',
-            '&.Mui-selected:hover': {
-              backgroundColor: 'blue',
-              color: 'blue',
-            },
-            '&.Mui-selected': {
-              backgroundColor: 'blue',
-            },
-          }}>
-            <img src={item.image} alt='icon' style={{ height: '16px', width: '16px', marginRight: '14px' }} />
-            <ListItemText primary={item.text}  slotProps={{
-              primary: {
-                sx: {
-                  fontFamily: 'Kumbh Sans',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  height: '17px',
-                },
-              },
-            }}/>
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-  </div>
-);
+      <List
+        sx={{
+          width: '192px',
+          top: '100px',
+          marginLeft: '25px',
+        }}
+      >
+        {SidebarExtraOptions.map((item) => (
+          <ListItem key={item.text} disablePadding sx={{ height: '40px', marginBottom: '8px' }}>
+            <ListItemButton component={Link} to={item.navigate} selected={location.pathname === item.navigate}>
+              <img src={item.image} alt='icon' style={{ height: '16px', width: '16px', marginRight: '14px' }} />
+              <ListItemText
+                primary={item.text}
+                slotProps={{
+                  primary: {
+                    sx: {
+                      fontFamily: 'Kumbh Sans',
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      height: '17px',
+                    },
+                  },
+                }}
+              />
+
+              <Badge
+                badgeContent='NEW'
+                //Todo check is styles accurate
+                sx={{
+                  marginRight: '10px',
+                  marginLeft: '10px',
+                  '& .MuiBadge-badge': {
+                    marginBottom: '1px',
+                    marginTop: '3px',
+                    marginRight: '10px',
+                    marginLeft: '10px',
+                  },
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+};
