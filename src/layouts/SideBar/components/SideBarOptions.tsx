@@ -1,21 +1,15 @@
-import { Badge, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
-import { SidebarExtraOptions, SidebarOptions } from '../../../core/constansts/sidebar-options';
-import type { SidebarOptionsType } from '../../../core/type/sidebar-options.ts';
+import { ListItemButton, ListItemText } from '@mui/material';
+import { SidebarExtraOptions, SidebarOptions } from '../../../core';
+import type { SidebarOptionsType } from '../../../core';
 import { Link } from 'react-router-dom';
+import * as Styled from './styled.ts';
 
 export const SideBarOptions = () => {
   return (
     <div>
-      <List
-        sx={{
-          width: '192px',
-          height: '279px',
-          top: '15px',
-          marginLeft: '25px',
-        }}
-      >
+      <Styled.SideBarOptions>
         {SidebarOptions.map((item: SidebarOptionsType) => (
-          <ListItem key={item.text} disablePadding sx={{ height: '40px', marginBottom: '8px' }}>
+          <Styled.SideBarItems key={item.text} disablePadding>
             <ListItemButton component={Link} to={item.navigate} selected={location.pathname === item.navigate}>
               <img src={item.image} alt='icon' style={{ height: '16px', width: '16px', marginRight: '14px' }} />
               <ListItemText
@@ -32,19 +26,13 @@ export const SideBarOptions = () => {
                 }}
               />
             </ListItemButton>
-          </ListItem>
+          </Styled.SideBarItems>
         ))}
-      </List>
+      </Styled.SideBarOptions>
 
-      <List
-        sx={{
-          width: '192px',
-          top: '100px',
-          marginLeft: '25px',
-        }}
-      >
+      <Styled.SideBarExtraOptions>
         {SidebarExtraOptions.map((item) => (
-          <ListItem key={item.text} disablePadding sx={{ height: '40px', marginBottom: '8px' }}>
+          <Styled.SideBarItems key={item.text} disablePadding>
             <ListItemButton component={Link} to={item.navigate} selected={location.pathname === item.navigate}>
               <img src={item.image} alt='icon' style={{ height: '16px', width: '16px', marginRight: '14px' }} />
               <ListItemText
@@ -61,24 +49,11 @@ export const SideBarOptions = () => {
                 }}
               />
 
-              <Badge
-                badgeContent='NEW'
-                //Todo check is styles accurate
-                sx={{
-                  marginRight: '10px',
-                  marginLeft: '10px',
-                  '& .MuiBadge-badge': {
-                    marginBottom: '1px',
-                    marginTop: '3px',
-                    marginRight: '10px',
-                    marginLeft: '10px',
-                  },
-                }}
-              />
+              <Styled.SideBarBadge badgeContent='NEW' />
             </ListItemButton>
-          </ListItem>
+          </Styled.SideBarItems>
         ))}
-      </List>
+      </Styled.SideBarExtraOptions>
     </div>
   );
 };

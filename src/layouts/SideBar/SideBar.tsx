@@ -2,8 +2,8 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import { SideBarOptions } from './components/SideBarOptions.tsx';
-import { Divider, Typography } from '@mui/material';
 import logo from './../../assets/logo.png';
+import { CompanyName, SideBarDivider } from './styled.ts';
 
 export const SideBar = () => {
   return (
@@ -12,8 +12,8 @@ export const SideBar = () => {
       <Box component='nav'>
         <Drawer variant='permanent' open>
           <img className='img' src={logo} alt='logo' />
-          <Typography sx={{ marginTop: '20px', height: '40px' }}>Udemy Inter.school</Typography>
-          <Divider sx={{ background: '#BDBDBD', marginTop: '27px', width: '240px', border: '0,5px' }} />
+          <CompanyName>Udemy Inter.school</CompanyName>
+          <SideBarDivider />
           <SideBarOptions></SideBarOptions>
         </Drawer>
       </Box>
